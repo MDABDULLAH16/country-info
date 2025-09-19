@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Country.css";
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountry }) => {
   //   console.log(country);
   const [visited, setVisited] = useState(false);
 
@@ -14,9 +14,10 @@ const Country = ({ country }) => {
     // setVisited(visited ? false : true);
 
     setVisited(!visited);
+    handleVisitedCountry(country);
   };
   return (
-    <div className="country">
+    <div className={`country ${visited ? "visited-country" : "nothing"}`}>
       <img src={country?.flags?.flags?.png} alt="" />
       <h3>{country?.name?.common}</h3>
       <strong> capital: {country?.capital?.capital}</strong> <br />
